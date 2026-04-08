@@ -1,0 +1,36 @@
+platform: "tensorrt_plan"
+#triton_backend: "tensorrt"
+max_batch_size: 4
+input [
+  {
+    name: "images"
+    data_type: TYPE_FP32
+    dims: [ 3, 640, 640 ]
+  }
+]
+output [
+  {
+    name: "num_dets"
+    data_type: TYPE_INT32
+    dims: [ 1 ]
+  },
+  {
+     name: "det_boxes"
+     data_type: TYPE_FP32
+     dims: [ 100, 5 ]
+  },
+  {
+     name: "det_scores"
+     data_type: TYPE_FP32
+     dims: [ 100]
+  },
+  {
+     name: "det_classes"
+     data_type: TYPE_INT32
+     dims: [ 100 ]
+  }
+]
+dynamic_batching {
+  preferred_batch_size: [ 2, 4 ]
+  max_queue_delay_microseconds: 100
+}

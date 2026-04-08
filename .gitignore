@@ -1,0 +1,24 @@
+.DS_Store
+
+# 课件与文档 PDF（本地保留）
+*.pdf
+
+# 模型与 TensorRT 二进制产物
+*.onnx
+*.pt
+*.pth
+*.engine
+*.plan
+*.trt
+*.safetensors
+
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env/
+
+build/
+cmake-build-*/
+out/
